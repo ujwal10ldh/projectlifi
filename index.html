@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070914">
+<meta name="description" content="A school science exhibition project demonstrating music transmission through LED light.">
+<title>Li-Fi — Music Transmission Through Light</title>
+<style>
+:root{--bg:#070914;--panel:#101326;--panel2:#151a32;--cyan:#53f5ff;--blue:#6488ff;--violet:#b18cff;--text:#f3f6ff;--muted:#aab2d0;--line:rgba(130,153,255,.2);--good:#7dffbd;--warning:#ffd68a}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:radial-gradient(ellipse at 75% -10%,#24204f 0,transparent 40%),radial-gradient(ellipse at 0% 35%,#0c2540 0,transparent 34%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65}button,a,input{font:inherit}a{color:inherit;text-decoration:none}button{cursor:pointer}.wrap{width:min(1160px,calc(100% - 36px));margin:auto}.topbar{position:sticky;top:0;z-index:50;background:rgba(7,9,20,.85);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:10px;font-weight:850;letter-spacing:.04em}.brand-mark{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--cyan),var(--blue));color:#07101b;font-weight:1000;box-shadow:0 0 25px #53f5ff45}.navlinks{display:flex;align-items:center;gap:19px;color:var(--muted);font-size:.91rem}.navlinks a:hover,.navlinks a:focus-visible{color:var(--cyan)}.nav-right{display:flex;align-items:center;gap:12px}.lang-switch{display:flex;padding:4px;border:1px solid var(--line);border-radius:999px;background:#0b0e1d}.lang-switch button{border:0;border-radius:999px;padding:7px 11px;background:transparent;color:var(--muted);font-size:.82rem}.lang-switch button.active{background:var(--cyan);color:#061018;font-weight:800}.menu-btn{display:none;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);padding:8px 12px}.hero{padding:82px 0 70px;min-height:610px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:35px}.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid #53f5ff4c;border-radius:999px;padding:7px 13px;color:var(--cyan);font-size:.82rem;background:#53f5ff0c}.dot{width:7px;height:7px;border-radius:50%;background:var(--good);box-shadow:0 0 12px var(--good)}h1{font-size:clamp(2.7rem,6vw,5.2rem);line-height:1.02;letter-spacing:-.055em;margin:22px 0}h1 span{background:linear-gradient(100deg,var(--cyan),#a5b5ff 60%,var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{max-width:610px;color:var(--muted);font-size:1.08rem}.hero .sub{font-size:1.2rem;color:#e2e9ff;font-weight:650}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}.btn{display:inline-flex;justify-content:center;align-items:center;gap:9px;border:1px solid var(--line);padding:12px 17px;border-radius:12px;color:var(--text);background:#ffffff08;font-weight:750;transition:transform .2s,border-color .2s}.btn:hover{transform:translateY(-2px);border-color:var(--cyan)}.btn.primary{color:#061018;border:0;background:linear-gradient(110deg,var(--cyan),#8faaff);box-shadow:0 8px 32px #53f5ff25}.hero-art{position:relative;min-height:390px;display:grid;place-items:center;isolation:isolate}.orbit{position:absolute;width:min(100%,440px);aspect-ratio:1;border:1px solid #7188ff30;border-radius:50%;animation:spin 34s linear infinite}.orbit:before,.orbit:after{content:"";position:absolute;border:1px dashed #53f5ff35;border-radius:50%;inset:10%}.orbit:after{inset:23%;border-style:solid}.device{position:absolute;z-index:2;border:1px solid #849aff44;background:linear-gradient(145deg,#1b2140,#0c1024);box-shadow:0 15px 55px #0008;border-radius:18px;padding:14px;text-align:center}.device .emoji{font-size:2rem;display:block}.device small{color:var(--muted)}.phone{left:3%;top:28%}.led-device{right:6%;top:12%;border-color:#53f5ff8c}.panel-device{right:0;bottom:12%}.speaker-device{left:10%;bottom:7%}.light-path{position:absolute;z-index:1;left:28%;top:37%;width:48%;height:4px;transform:rotate(-17deg);background:linear-gradient(90deg,transparent,var(--cyan),white,var(--cyan),transparent);box-shadow:0 0 22px var(--cyan);animation:pulse 1.1s ease-in-out infinite alternate}.light-path:after{content:"";position:absolute;inset:-12px 0;background:linear-gradient(90deg,transparent,#53f5ff30,transparent);filter:blur(5px)}.wave{position:absolute;left:40%;bottom:18%;display:flex;gap:4px;align-items:center;height:65px;z-index:2}.wave i{display:block;width:4px;border-radius:9px;background:var(--violet);animation:wave .7s ease-in-out infinite alternate}.wave i:nth-child(3n){animation-delay:.2s}.wave i:nth-child(2n){animation-delay:.4s}.section{padding:76px 0}.section-head{max-width:760px;margin-bottom:30px}.kicker{color:var(--cyan);font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;font-weight:850}.section h2{font-size:clamp(2rem,4vw,3rem);letter-spacing:-.035em;line-height:1.12;margin:9px 0 13px}.section-head p,.muted{color:var(--muted)}.grid{display:grid;gap:16px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.grid.five{grid-template-columns:repeat(5,minmax(0,1fr))}.card{border:1px solid var(--line);border-radius:18px;padding:22px;background:linear-gradient(145deg,#14182eeb,#0d1020f2);box-shadow:0 14px 40px #00000013}.card h3{margin:9px 0 6px;font-size:1.12rem}.card p{margin:0;color:var(--muted);font-size:.95rem}.iconbox{width:48px;height:48px;display:grid;place-items:center;border-radius:14px;background:#53f5ff12;border:1px solid #53f5ff25;font-size:1.6rem}.notice{padding:17px 19px;border:1px solid #ffd68a4c;border-radius:14px;background:#ffd68a0b;color:#e9d8b2;margin-top:20px}.steps .card{position:relative}.step-num{font-size:.78rem;color:var(--cyan);letter-spacing:.12em;font-weight:900}.flow{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;padding:22px;border:1px solid var(--line);border-radius:16px;background:#0a0d1a;margin-top:20px}.flow span{padding:9px 12px;background:#171d36;border:1px solid #6478b833;border-radius:10px;font-size:.88rem;font-weight:700;text-align:center}.flow b{color:var(--cyan)}.sim-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:stretch}.sim-stage{min-height:350px;position:relative;overflow:hidden;border:1px solid #53f5ff35;border-radius:22px;background:radial-gradient(ellipse at 50% 40%,#19284a,#0a0d1b 70%);padding:20px}.sim-stage.running .beam{opacity:1;animation:beamtravel 1.5s linear infinite}.sim-stage.running .sim-led{box-shadow:0 0 18px var(--cyan),0 0 50px #53f5ff90}.sim-devices{height:255px;position:relative;display:flex;align-items:center;justify-content:space-between;gap:14px}.sim-node{position:relative;z-index:2;width:112px;min-height:112px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px;border:1px solid #7d8ecf55;border-radius:18px;background:#121831;box-shadow:0 10px 30px #0005}.sim-node .big{font-size:2.3rem;line-height:1.25}.sim-node small{color:var(--muted);font-size:.76rem}.beam{position:absolute;z-index:1;left:19%;right:19%;top:47%;height:5px;opacity:.22;background:linear-gradient(90deg,transparent,var(--cyan),white,var(--cyan),transparent);box-shadow:0 0 24px var(--cyan)}.beam:after{content:"";position:absolute;left:0;top:-10px;bottom:-10px;width:35%;background:linear-gradient(90deg,transparent,#ffffffc9,transparent);filter:blur(3px)}.signal-wave{height:45px;display:flex;justify-content:center;align-items:center;gap:4px}.signal-wave i{width:4px;height:9px;border-radius:5px;background:var(--violet);opacity:.4}.running .signal-wave i{opacity:1;animation:wave .45s ease-in-out infinite alternate}.signal-wave i:nth-child(2n){animation-delay:.15s}.signal-wave i:nth-child(3n){animation-delay:.3s}.sim-status{font-size:.9rem;color:var(--good);margin-top:8px}.control-card{display:flex;flex-direction:column;gap:17px}.control-card label{display:flex;justify-content:space-between;gap:12px;font-weight:750}.control-card input[type=range]{width:100%;accent-color:var(--cyan)}.meter{height:10px;background:#252a43;border-radius:999px;overflow:hidden;margin:9px 0}.meter span{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:inherit;transition:width .25s}.mini-label{color:var(--muted);font-size:.84rem}.component-note{display:block;width:100%;min-height:90px;background:#090c19;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:12px;resize:vertical}.team-card{text-align:center}.avatar{width:62px;height:62px;display:grid;place-items:center;border-radius:50%;margin:0 auto 12px;background:linear-gradient(135deg,#53f5ff30,#b18cff30);border:1px solid #8da5ff4c;font-size:1.5rem;font-weight:900}.team-card .role{display:inline-block;margin-top:10px;border:1px solid #53f5ff35;color:var(--cyan);border-radius:999px;padding:4px 10px;font-size:.78rem}.faq{display:grid;gap:10px}.faq details{border:1px solid var(--line);border-radius:14px;background:#101326;padding:0 17px}.faq summary{padding:16px 0;cursor:pointer;font-weight:800}.faq details p{color:var(--muted);padding:0 0 16px;margin:0}.gratitude{background:linear-gradient(120deg,#12233b,#17132c);border:1px solid #53f5ff30;border-radius:22px;padding:30px}.footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted)}.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}.top-btn{position:fixed;right:18px;bottom:18px;width:45px;height:45px;border-radius:14px;border:1px solid #53f5ff5c;background:#10172c;color:var(--cyan);font-size:1.2rem;z-index:40;box-shadow:0 8px 28px #0006}.hidden{display:none!important}:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}@keyframes spin{to{transform:rotate(360deg)}}@keyframes pulse{from{opacity:.5;filter:brightness(.8)}to{opacity:1;filter:brightness(1.5)}}@keyframes wave{from{transform:scaleY(.35)}to{transform:scaleY(1.35)}}@keyframes beamtravel{from{background-position:0 0}to{background-position:200px 0}}
+@media(max-width:980px){.navlinks{gap:10px;font-size:.83rem}.hero{grid-template-columns:1fr;gap:10px;padding-top:55px}.hero-art{min-height:360px}.grid.five{grid-template-columns:repeat(3,minmax(0,1fr))}.sim-layout{grid-template-columns:1fr}}@media(max-width:760px){.nav{min-height:66px;flex-wrap:wrap;padding:10px 0}.menu-btn{display:block}.navlinks{display:none;order:3;width:100%;padding:12px 0 6px;flex-direction:column;align-items:stretch;gap:0}.navlinks.open{display:flex}.navlinks a{padding:10px;border-top:1px solid var(--line)}.nav-right{margin-left:auto}.hero{padding:42px 0 45px}.hero-art{min-height:300px;transform:scale(.94)}.grid.two,.grid.three{grid-template-columns:1fr}.grid.five{grid-template-columns:repeat(2,minmax(0,1fr))}.section{padding:55px 0}.sim-devices{gap:6px}.sim-node{width:90px;min-height:100px}.beam{left:20%;right:20%}.card{padding:19px}}@media(max-width:420px){.wrap{width:min(100% - 24px,1160px)}.brand{font-size:.92rem}.brand-mark{width:34px;height:34px}.lang-switch button{padding:6px 8px;font-size:.75rem}.hero-art{min-height:270px;transform:scale(.85);margin:-10px -15px}.grid.five{grid-template-columns:1fr}.sim-stage{padding:12px}.sim-node{width:82px;padding:6px}.sim-node .big{font-size:1.9rem}.sim-node small{font-size:.68rem}.actions .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap nav">
+    <a class="brand" href="#home" aria-label="Li-Fi project home"><span class="brand-mark">Li</span><span>LI-FI <span style="color:var(--cyan)">LAB</span></span></a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navlinks" data-i18n="menu">Menu</button>
+    <nav class="navlinks" id="navlinks" aria-label="Main navigation">
+      <a href="#home" data-i18n="navHome">Home</a><a href="#about" data-i18n="navAbout">About Project</a><a href="#how" data-i18n="navHow">How It Works</a><a href="#components" data-i18n="navComponents">Components</a><a href="#simulation" data-i18n="navSimulation">Simulation</a><a href="#team" data-i18n="navTeam">Team</a><a href="#faqs" data-i18n="navFaq">FAQs</a>
+    </nav>
+    <div class="nav-right"><div class="lang-switch" role="group" aria-label="Choose website language"><button type="button" data-lang="en">English</button><button type="button" data-lang="hi" class="active">Hinglish</button></div></div>
+  </div>
+</header>
+<main>
+<section class="wrap hero" id="home">
+  <div>
+    <div class="eyebrow"><span class="dot"></span><span data-i18n="badge">School Science Exhibition Project</span></div>
+    <h1><span>LI-FI</span><br><span data-i18n="heroTitle">Music Transmission Through Light</span></h1>
+    <p class="sub" data-i18n="heroSub">Jab Light Banti Hai Information Ka Medium!</p>
+    <p data-i18n="heroDesc">Hamare science exhibition project mein hum dikhate hain ki audio signal ko LED light ki madad se transmit kiya ja sakta hai aur receiver par use dobara sound mein convert kiya ja sakta hai.</p>
+    <div class="actions"><a class="btn primary" href="#about" data-i18n="explore">Explore Our Project ↘</a><a class="btn" href="#how" data-i18n="howBtn">How It Works</a><a class="btn" href="#simulation" data-i18n="tryBtn">Try Virtual Simulation</a></div>
+  </div>
+  <div class="hero-art" aria-label="Illustration of music sent from a phone through LED light to a solar panel and speaker">
+    <div class="orbit"></div><div class="light-path"></div>
+    <div class="device phone"><span class="emoji">📱</span><b data-i18n="phone">Mobile Phone</b><small data-i18n="audioSource">Audio source</small></div>
+    <div class="device led-device"><span class="emoji">💡</span><b data-i18n="ledTransmitter">LED Transmitter</b><small data-i18n="lightSignal">Changing light signal</small></div>
+    <div class="device panel-device"><span class="emoji">🔆</span><b data-i18n="solarReceiver">Solar Receiver</b><small data-i18n="signalReceived">Signal received</small></div>
+    <div class="device speaker-device"><span class="emoji">🔊</span><b data-i18n="speaker">Speaker</b><small data-i18n="audioOutput">Audio output</small></div>
+    <div class="wave" aria-hidden="true"><i style="height:12px"></i><i style="height:28px"></i><i style="height:42px"></i><i style="height:22px"></i><i style="height:52px"></i><i style="height:30px"></i><i style="height:44px"></i><i style="height:18px"></i><i style="height:36px"></i></div>
+  </div>
+</section>
+
+<section class="section" id="about"><div class="wrap">
+  <div class="section-head"><div class="kicker" data-i18n="aboutKicker">THE IDEA</div><h2 data-i18n="aboutTitle">About Our Project</h2><p data-i18n="aboutDesc">Hamare model mein mobile phone se audio signal AUX cable ke through transmitter circuit tak pahunchta hai. Transmitter circuit LED ki brightness ko audio signal ke according change karta hai. LED se nikalne wali changing light receiver ke solar panel par padti hai. Solar panel light changes ko electrical signal mein convert karta hai. Receiver se signal AUX cable ke through speaker tak jata hai, jahan music sunai deta hai.</p></div>
+  <div class="grid two"><article class="card"><div class="iconbox">🎯</div><h3 data-i18n="objectiveTitle">Project Objective</h3><p data-i18n="objectiveDesc">To demonstrate the basic idea of transmitting an audio signal using changes in LED light and receiving it with a light-sensitive panel.</p></article><article class="card"><div class="iconbox">🔬</div><h3 data-i18n="scopeTitle">What This Model Demonstrates</h3><p data-i18n="scopeDesc">This is an educational light-based audio transmission model. It is not a complete commercial Li-Fi internet or networking system.</p></article></div>
+</div></section>
+
+<section class="section" id="how"><div class="wrap">
+  <div class="section-head"><div class="kicker" data-i18n="processKicker">FROM SOUND TO LIGHT AND BACK</div><h2 data-i18n="howTitle">How Our Project Works</h2><p data-i18n="howDesc">The system sends a changing electrical audio signal through a light source, then converts the received light variations back into an electrical signal.</p></div>
+  <div class="grid three steps">
+    <article class="card"><div class="step-num">STEP 01</div><div class="iconbox">📱</div><h3 data-i18n="step1Title">Audio Input</h3><p data-i18n="step1Desc">Mobile phone se music audio output/AUX connection ke through transmitter circuit tak aata hai.</p></article>
+    <article class="card"><div class="step-num">STEP 02</div><div class="iconbox">🔌</div><h3 data-i18n="step2Title">Transmitter Circuit</h3><p data-i18n="step2Desc">Circuit audio signal ke according LED ki light intensity ko modulate karta hai.</p></article>
+    <article class="card"><div class="step-num">STEP 03</div><div class="iconbox">💡</div><h3 data-i18n="step3Title">Light Transmission</h3><p data-i18n="step3Desc">LED ki changing light receiver ki direction mein travel karti hai. Transmitter aur receiver ki alignment zaroori hai.</p></article>
+    <article class="card"><div class="step-num">STEP 04</div><div class="iconbox">🔆</div><h3 data-i18n="step4Title">Solar Panel Receiver</h3><p data-i18n="step4Desc">Solar panel light mein hone wale changes ko electrical signal mein convert karta hai.</p></article>
+    <article class="card"><div class="step-num">STEP 05</div><div class="iconbox">🔊</div><h3 data-i18n="step5Title">Audio Output</h3><p data-i18n="step5Desc">Receiver circuit aur AUX connection ke through signal speaker tak pahunchta hai, aur music sunai deta hai.</p></article>
+  </div>
+  <div class="flow" aria-label="Signal flow"><span data-i18n="flowPhone">Mobile Phone</span><b>→</b><span data-i18n="flowAux">AUX Cable</span><b>→</b><span data-i18n="flowTx">Transmitter Circuit</span><b>→</b><span data-i18n="flowLed">LED Light</span><b>→</b><span data-i18n="flowSolar">Solar Panel Receiver</span><b>→</b><span data-i18n="flowRx">Receiver Circuit / AUX</span><b>→</b><span data-i18n="flowSpeaker">Speaker</span></div>
+</div></section>
+
+<section class="section" id="components"><div class="wrap">
+  <div class="section-head"><div class="kicker" data-i18n="componentsKicker">WHAT WE USE</div><h2 data-i18n="componentsTitle">Components Used</h2><p data-i18n="componentsDesc">Edit the component list below so it matches the exact hardware in your school model.</p></div>
+  <div class="grid five">
+    <article class="card"><div class="iconbox">📱</div><h3 data-i18n="c1Title">Mobile Phone</h3><p data-i18n="c1Desc">Provides the audio signal.</p></article>
+    <article class="card"><div class="iconbox">🎧</div><h3 data-i18n="c2Title">AUX Cable</h3><p data-i18n="c2Desc">Carries the audio signal between connections.</p></article>
+    <article class="card"><div class="iconbox">💡</div><h3 data-i18n="c3Title">LED</h3><p data-i18n="c3Desc">Acts as the light transmitter.</p></article>
+    <article class="card"><div class="iconbox">🔧</div><h3 data-i18n="c4Title">Transmitter Circuit</h3><p data-i18n="c4Desc">Drives the LED according to the audio signal.</p></article>
+    <article class="card"><div class="iconbox">🔋</div><h3 data-i18n="c5Title">Battery</h3><p data-i18n="c5Desc">Supplies power to the circuit.</p></article>
+    <article class="card"><div class="iconbox">🔆</div><h3 data-i18n="c6Title">Solar Panel</h3><p data-i18n="c6Desc">Receives light variations.</p></article>
+    <article class="card"><div class="iconbox">🧩</div><h3 data-i18n="c7Title">Receiver Circuit</h3><p data-i18n="c7Desc">Conditions the signal for speaker playback, if included.</p></article>
+    <article class="card"><div class="iconbox">🔊</div><h3 data-i18n="c8Title">Speaker</h3><p data-i18n="c8Desc">Produces the audio output.</p></article>
+    <article class="card"><div class="iconbox">🪢</div><h3 data-i18n="c9Title">Connecting Wires</h3><p data-i18n="c9Desc">Connect the circuit components.</p></article>
+    <article class="card"><div class="iconbox">🧱</div><h3 data-i18n="c10Title">Supporting Base</h3><p data-i18n="c10Desc">Keeps the model stable.</p></article>
+  </div>
+  <div class="notice"><strong data-i18n="editNoteTitle">Editable project note:</strong> <span data-i18n="editNoteDesc">Remove any component above that is not present in your actual model. You can record your confirmed parts here:</span><textarea class="component-note" id="partsNote" aria-label="Editable component list" data-placeholder="partsPlaceholder" placeholder="Write the components actually used in your model...">Mobile phone, AUX cable, LED, transmitter circuit, battery, solar panel, receiver circuit (if included), speaker, connecting wires, supporting base.</textarea><button class="btn" style="margin-top:10px" id="saveParts" data-i18n="saveNote">Save note on this device</button> <span id="partsSaved" class="mini-label" role="status"></span></div>
+</div></section>
+
+<section class="section" id="simulation"><div class="wrap">
+  <div class="section-head"><div class="kicker" data-i18n="simulationKicker">INTERACTIVE LEARNING</div><h2 data-i18n="simulationTitle">Try Our Li-Fi Simulation</h2><p data-i18n="simulationDesc">Start the visual model to see a simulated light signal travel from the LED to the solar-panel receiver.</p></div>
+  <div class="sim-layout">
+    <div class="sim-stage" id="simStage">
+      <div class="sim-devices">
+        <div class="sim-node"><span class="big">📱</span><strong data-i18n="simSource">Music source</strong><small data-i18n="simAudioIn">Audio input</small></div>
+        <div class="beam"></div>
+        <div class="sim-node sim-led"><span class="big">💡</span><strong data-i18n="simLed">LED</strong><small data-i18n="simTransmitter">Transmitter</small></div>
+        <div class="sim-node"><span class="big">🔆</span><strong data-i18n="simPanel">Solar panel</strong><small data-i18n="simReceiver">Receiver</small></div>
+      </div>
+      <div class="signal-wave" id="signalWave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div style="text-align:center"><span style="font-size:1.6rem">🔊</span><div data-i18n="simSpeaker">Virtual speaker</div></div>
+      <div class="sim-status" id="simStatus" role="status" aria-live="polite">● Simulation stopped</div>
+    </div>
+    <div class="card control-card">
+      <div><h3 data-i18n="controlsTitle">Simulation Controls</h3><p data-i18n="controlsDesc">Adjust virtual light intensity and observe the illustrative signal indicator.</p></div>
+      <div class="actions" style="margin:0"><button class="btn primary" id="startSim" data-i18n="startSim">▶ Start Simulation</button><button class="btn" id="stopSim" data-i18n="stopSim">■ Stop Simulation</button></div>
+      <div><label for="intensity"><span data-i18n="lightIntensity">Light intensity</span><span id="intensityValue">70%</span></label><input id="intensity" type="range" min="0" max="100" value="70"><div class="mini-label" data-i18n="intensityHelp">This changes the visual effect only.</div></div>
+      <div><label><span data-i18n="signalStrength">Simulated signal strength</span><span id="strengthLabel">Good</span></label><div class="meter"><span id="strengthBar"></span></div><div class="mini-label" data-i18n="signalHelp">Illustrative indicator, not a real measurement.</div></div>
+      <div class="notice" style="margin:0" data-i18n="simulationWarning">This is only a visual website simulation. It does not control real hardware or transmit actual music.</div>
+    </div>
+  </div>
+</div></section>
+
+<section class="section" id="science"><div class="wrap">
+  <div class="section-head"><div class="kicker" data-i18n="scienceKicker">THE SCIENCE</div><h2 data-i18n="scienceTitle">Science Behind Li-Fi</h2><p data-i18n="scienceDesc">The core idea is to encode information in changing light and detect those changes at the receiver.</p></div>
+  <div class="grid three">
+    <article class="card"><div class="iconbox">〰️</div><h3 data-i18n="s1Title">Modulation</h3><p data-i18n="s1Desc">Light intensity can be changed in a pattern that represents information. This is called modulation.</p></article>
+    <article class="card"><div class="iconbox">🔄</div><h3 data-i18n="s2Title">Light to Electricity</h3><p data-i18n="s2Desc">A light-sensitive receiver converts changes in received light into electrical changes.</p></article>
+    <article class="card"><div class="iconbox">🎚️</div><h3 data-i18n="s3Title">Signal Quality</h3><p data-i18n="s3Desc">LED type, receiver, circuit design, alignment, ambient light and distance can affect performance.</p></article>
+  </div>
+  <div class="notice" data-i18n="scienceNote">Our model demonstrates a basic principle of light-based signal transmission. Commercial Li-Fi systems require more advanced hardware, signal processing and networking technology.</div>
+</div></section>
+
+<section class="section" id="proscons"><div class="wrap">
+  <div class="section-head"><div class="kicker" data-i18n="prosKicker">A BALANCED VIEW</div><h2 data-i18n="prosTitle">Advantages & Limitations</h2></div>
+  <div class="grid two"><article class="card"><div class="iconbox">✅</div><h3 data-i18n="advantages">Advantages</h3><ul><li data-i18n="a1">Demonstrates an alternative way to transmit information.</li><li data-i18n="a2">Shows light as a transmission medium in this model.</li><li data-i18n="a3">Helps students learn electronics, circuits and communication.</li><li data-i18n="a4">Makes science learning interactive.</li><li data-i18n="a5">Can inspire further research into optical communication.</li></ul></article>
+  <article class="card"><div class="iconbox">⚠️</div><h3 data-i18n="limitations">Limitations</h3><ul><li data-i18n="l1">The receiver needs sufficient light from the transmitter.</li><li data-i18n="l2">Alignment and distance can affect the result.</li><li data-i18n="l3">Ambient light may interfere with the signal.</li><li data-i18n="l4">Audio quality depends on the circuit and components.</li><li data-i18n="l5">This basic model does not provide internet or full Li-Fi networking.</li></ul></article></div>
+</div></section>
+
+<section class="section" id="applications"><div class="wrap">
+  <div class="section-head"><div class="kicker" data-i18n="applicationsKicker">BEYOND THE MODEL</div><h2 data-i18n="applicationsTitle">Applications of Advanced Li-Fi</h2><p data-i18n="applicationsDesc">These are possible uses of developed Li-Fi systems—not functions demonstrated by our simple audio model.</p></div>
+  <div class="grid three">
+    <article class="card"><div class="iconbox">🏢</div><h3 data-i18n="app1Title">Indoor Communication</h3><p data-i18n="app1Desc">Potential data links in indoor spaces using suitable light systems.</p></article>
+    <article class="card"><div class="iconbox">📡</div><h3 data-i18n="app2Title">RF-sensitive Locations</h3><p data-i18n="app2Desc">Could be considered where radio-frequency interference must be carefully managed.</p></article>
+    <article class="card"><div class="iconbox">💡</div><h3 data-i18n="app3Title">Smart Lighting</h3><p data-i18n="app3Desc">Research into connected lighting and indoor digital environments.</p></article>
+    <article class="card"><div class="iconbox">🧪</div><h3 data-i18n="app4Title">Education & Research</h3><p data-i18n="app4Desc">Useful for exploring optical communication, sensors and signal processing.</p></article>
+    <article class="card"><div class="iconbox">🏭</div><h3 data-i18n="app5Title">Industrial Settings</h3><p data-i18n="app5Desc">Selected environments may benefit when a suitable engineered system is available.</p></article>
+    <article class="card"><div class="iconbox">🏥</div><h3 data-i18n="app6Title">Healthcare Environments</h3><p data-i18n="app6Desc">Possible specialized use where system design and safety requirements are met.</p></article>
+  </div>
+</div></section>
+
+<section class="section" id="team"><div class="wrap">
+  <div class="section-head"><div class="kicker" data-i18n="teamKicker">THE PEOPLE BEHIND THE IDEA</div><h2 data-i18n="teamTitle">Meet Our Team</h2><p data-i18n="teamDesc">A student team exploring science through collaboration and hands-on learning.</p></div>
+  <div class="grid three">
+    <article class="card team-card"><div class="avatar">SS</div><h3>Shivani Shimar Ma’am</h3><p data-i18n="teacherRole">Teacher / Project Guide</p><span class="role" data-i18n="guideRole">Project Guide</span></article>
+    <article class="card team-card"><div class="avatar">US</div><h3>Ujwal Singh</h3><p data-i18n="class11">Class 11</p><span class="role" data-i18n="techBuilder">Tech Builder</span></article>
+    <article class="card team-card"><div class="avatar">S</div><h3>Shiva</h3><p data-i18n="class11">Class 11</p><span class="role" data-i18n="designer">Project Designer</span></article>
+    <article class="card team-card"><div class="avatar">D</div><h3>Deepak</h3><p data-i18n="class11">Class 11</p><span class="role" data-i18n="helper">Project Helper</span></article>
+    <article class="card team-card"><div class="avatar">R</div><h3>Raj</h3><p data-i18n="class11">Class 11</p><span class="role" data-i18n="manager">Project Manager</span></article>
+    <article class="card team-card"><div class="avatar">V</div><h3>Vinay</h3><p data-i18n="class9">Class 9</p><span class="role" data-i18n="idea">Project Idea</span></article>
+    <article class="card team-card"><div class="avatar">A</div><h3>Ayushman</h3><p data-i18n="class9">Class 9</p><span class="role" data-i18n="helper">Project Helper</span></article>
+    <article class="card team-card"><div class="avatar">＋</div><h3 data-i18n="moreStudents">And Many More Students</h3><p data-i18n="moreDesc">Many students contribute to a shared spirit of learning.</p><span class="role" data-i18n="teamwork">Teamwork</span></article>
+  </div>
+  <p class="muted" style="margin-top:18px" data-i18n="teamCaption">Yeh project teamwork, creativity, scientific thinking aur collaboration ka result hai.</p>
+</div></section>
+
+<section class="section" id="gratitude"><div class="wrap"><div class="gratitude"><div class="kicker" data-i18n="gratitudeKicker">WITH RESPECT AND GRATITUDE</div><h2 data-i18n="gratitudeTitle">With Respect and Gratitude</h2><p data-i18n="gratitudeDesc">Hum apni respected Shivani Shimar Ma’am ka dil se dhanyavaad karte hain, jinhone humein guidance aur encouragement diya. Hum apne Principal Sir/Ma’am, sabhi teachers, parents, judges aur exhibition visitors ka bhi aabhar vyakt karte hain, jo students ke ideas aur learning ko support karte hain.</p><h3 data-i18n="thankYou">Thank You for Visiting Our Science Exhibition Project!</h3></div></div></section>
+
+<section class="section" id="faqs"><div class="wrap"><div class="section-head"><div class="kicker" data-i18n="faqKicker">GOOD QUESTIONS</div><h2 data-i18n="faqTitle">Frequently Asked Questions</h2></div>
+  <div class="faq">
+    <details><summary data-i18n="q1">Q1. What is Li-Fi?</summary><p data-i18n="ans1">Li-Fi is a light-based wireless communication technology that can transmit information using light.</p></details>
+    <details><summary data-i18n="q2">Q2. Does our model provide internet?</summary><p data-i18n="ans2">No. Our model is a basic educational demonstration of transmitting an audio signal using light.</p></details>
+    <details><summary data-i18n="q3">Q3. What does the solar panel do?</summary><p data-i18n="ans3">The solar panel helps convert changes in light into an electrical signal.</p></details>
+    <details><summary data-i18n="q4">Q4. Must the light beam visibly flicker?</summary><p data-i18n="ans4">No. The information is represented by changes in light intensity, which can happen too quickly for the eye to see as flicker.</p></details>
+    <details><summary data-i18n="q5">Q5. Does the website simulation control the real model?</summary><p data-i18n="ans5">No. It is only a visual explanation and does not control the hardware or transmit real audio.</p></details>
+  </div>
+</div></section>
+</main>
+<footer class="footer"><div class="wrap footer-inner"><div><strong style="color:var(--text)">LI-FI — <span data-i18n="footerTitle">Music Transmission Through Light</span></strong><div data-i18n="footerProject">School Science Exhibition Project</div><div class="mini-label">Ujwal Singh · Shiva · Deepak · Raj · Vinay · Ayushman</div><div class="mini-label"><span data-i18n="footerTeacher">Teacher:</span> Shivani Shimar Ma’am</div></div><div><div data-i18n="footerMade">Made with curiosity, teamwork, and a love for science.</div><a href="#home" class="btn" style="margin-top:10px" data-i18n="backTop">↑ Back to Top</a></div></div></footer>
+<button class="top-btn" id="topBtn" aria-label="Back to top" title="Back to top">↑</button>
+<script>
+const translations = {
+hi: {
+menu:"Menu",navHome:"Home",navAbout:"Project ke Baare Mein",navHow:"Kaise Kaam Karta Hai",navComponents:"Components",navSimulation:"Simulation",navTeam:"Team",navFaq:"FAQs",
+badge:"School Science Exhibition Project",heroTitle:"Music Transmission Through Light",heroSub:"Jab Light Banti Hai Information Ka Medium!",heroDesc:"Hamare science exhibition project mein hum dikhate hain ki audio signal ko LED light ki madad se transmit kiya ja sakta hai aur receiver par use dobara sound mein convert kiya ja sakta hai.",explore:"Explore Our Project ↘",howBtn:"Kaise Kaam Karta Hai",tryBtn:"Virtual Simulation Try Karein",phone:"Mobile Phone",audioSource:"Audio source",ledTransmitter:"LED Transmitter",lightSignal:"Changing light signal",solarReceiver:"Solar Receiver",signalReceived:"Signal received",speaker:"Speaker",audioOutput:"Audio output",
+aboutKicker:"PROJECT KA IDEA",aboutTitle:"Hamare Project Ke Baare Mein",aboutDesc:"Hamare model mein mobile phone se audio signal AUX cable ke through transmitter circuit tak pahunchta hai. Transmitter circuit LED ki brightness ko audio signal ke according change karta hai. LED se nikalne wali changing light receiver ke solar panel par padti hai. Solar panel light changes ko electrical signal mein convert karta hai. Receiver se signal AUX cable ke through speaker tak jata hai, jahan music sunai deta hai.",objectiveTitle:"Project ka Objective",objectiveDesc:"LED light mein changes ke through audio signal bhejne aur light-sensitive panel se receive karne ka basic idea dikhana.",scopeTitle:"Yeh Model Kya Dikhata Hai",scopeDesc:"Yeh light-based audio transmission ka educational model hai. Yeh complete commercial Li-Fi internet ya networking system nahi hai.",
+processKicker:"SOUND SE LIGHT, PHIR WAPAS",howTitle:"Hamara Project Kaise Kaam Karta Hai",howDesc:"System changing electrical audio signal ko light source ke through bhejta hai, phir receiver par light ke changes ko dobara electrical signal mein convert kiya jata hai.",step1Title:"Audio Input",step1Desc:"Mobile phone se music audio output/AUX connection ke through transmitter circuit tak aata hai.",step2Title:"Transmitter Circuit",step2Desc:"Circuit audio signal ke according LED ki light intensity ko modulate karta hai.",step3Title:"Light Transmission",step3Desc:"LED ki changing light receiver ki direction mein travel karti hai. Transmitter aur receiver ki alignment zaroori hai.",step4Title:"Solar Panel Receiver",step4Desc:"Solar panel light mein hone wale changes ko electrical signal mein convert karta hai.",step5Title:"Audio Output",step5Desc:"Receiver circuit aur AUX connection ke through signal speaker tak pahunchta hai, aur music sunai deta hai.",flowPhone:"Mobile Phone",flowAux:"AUX Cable",flowTx:"Transmitter Circuit",flowLed:"LED Light",flowSolar:"Solar Panel Receiver",flowRx:"Receiver Circuit / AUX",flowSpeaker:"Speaker",
+componentsKicker:"HAMARE COMPONENTS",componentsTitle:"Use Kiye Gaye Components",componentsDesc:"Neeche di gayi list ko apne school model ke actual hardware ke according edit karein.",c1Title:"Mobile Phone",c1Desc:"Audio signal deta hai.",c2Title:"AUX Cable",c2Desc:"Connections ke beech audio signal le jati hai.",c3Title:"LED",c3Desc:"Light transmitter ka kaam karti hai.",c4Title:"Transmitter Circuit",c4Desc:"Audio signal ke according LED ko drive karta hai.",c5Title:"Battery",c5Desc:"Circuit ko power supply deti hai.",c6Title:"Solar Panel",c6Desc:"Light ke changes receive karta hai.",c7Title:"Receiver Circuit",c7Desc:"Speaker playback ke liye signal suitable banata hai, agar model mein ho.",c8Title:"Speaker",c8Desc:"Audio output deta hai.",c9Title:"Connecting Wires",c9Desc:"Circuit components ko connect karte hain.",c10Title:"Supporting Base",c10Desc:"Model ko stable rakhta hai.",editNoteTitle:"Editable project note:",editNoteDesc:"Jo component actual model mein nahi hai, use list se hata dein. Confirmed parts yahan likh sakte hain:",partsPlaceholder:"Apne model mein use hue components likhein...",saveNote:"Is device par note save karein",saved:"Note is device par save ho gaya.",saveFailed:"Note save nahi ho saka. Aap text copy kar sakte hain.",
+simulationKicker:"INTERACTIVE LEARNING",simulationTitle:"Li-Fi Simulation Try Karein",simulationDesc:"Visual model start karein aur LED se solar-panel receiver tak simulated light signal dekhein.",simSource:"Music source",simAudioIn:"Audio input",simLed:"LED",simTransmitter:"Transmitter",simPanel:"Solar panel",simReceiver:"Receiver",simSpeaker:"Virtual speaker",controlsTitle:"Simulation Controls",controlsDesc:"Virtual light intensity badlein aur illustrative signal indicator dekhein.",startSim:"▶ Simulation Start Karein",stopSim:"■ Simulation Band Karein",lightIntensity:"Light intensity",intensityHelp:"Yeh sirf visual effect ko change karta hai.",signalStrength:"Simulated signal strength",signalHelp:"Yeh sirf example indicator hai, real measurement nahi.",simulationWarning:"Yeh sirf website ki visual simulation hai. Yeh real hardware ko control nahi karti aur actual music transmit nahi karti.",statusStopped:"● Simulation band hai",statusRunning:"● Simulation chal rahi hai",strengthLow:"Low",strengthMedium:"Medium",strengthGood:"Good",
+scienceKicker:"SCIENCE SAMjhein",scienceTitle:"Li-Fi Ke Peechhe Ka Science",scienceDesc:"Basic idea hai information ko changing light mein encode karna aur receiver par changes detect karna.",s1Title:"Modulation",s1Desc:"Information represent karne ke liye light intensity ko ek pattern mein change kiya ja sakta hai. Is process ko modulation kehte hain.",s2Title:"Light se Electricity",s2Desc:"Light-sensitive receiver, received light ke changes ko electrical changes mein convert karta hai.",s3Title:"Signal Quality",s3Desc:"LED, receiver, circuit design, alignment, aas-paas ki light aur distance performance ko affect kar sakte hain.",scienceNote:"Hamara model light-based signal transmission ka basic principle dikhata hai. Commercial Li-Fi systems ko advanced hardware, signal processing aur networking technology chahiye.",
+prosKicker:"FAAYDE AUR LIMITS",prosTitle:"Advantages aur Limitations",advantages:"Advantages / Faayde",limitations:"Limitations / Seemayein",a1:"Information transmit karne ka ek alternative tareeka dikhata hai.",a2:"Is model mein light ko transmission medium ke roop mein dikhata hai.",a3:"Students ko electronics, circuits aur communication samajhne mein help karta hai.",a4:"Science learning ko interactive banata hai.",a5:"Optical communication par aage research karne ki inspiration de sakta hai.",l1:"Receiver ko transmitter se sufficient light milni chahiye.",l2:"Alignment aur distance result ko affect kar sakte hain.",l3:"Aas-paas ki light signal mein interference kar sakti hai.",l4:"Audio quality circuit aur components par depend karti hai.",l5:"Yeh basic model internet ya complete Li-Fi networking provide nahi karta.",
+applicationsKicker:"MODEL SE AAGE",applicationsTitle:"Advanced Li-Fi ke Applications",applicationsDesc:"Yeh advanced Li-Fi systems ke possible uses hain—hamara simple audio model in sab features ko demonstrate nahi karta.",app1Title:"Indoor Communication",app1Desc:"Suitable light systems ke through indoor spaces mein data links.",app2Title:"RF-sensitive Locations",app2Desc:"Jahan radio-frequency interference ko carefully manage karna ho, wahan consider kiya ja sakta hai.",app3Title:"Smart Lighting",app3Desc:"Connected lighting aur indoor digital environments par research.",app4Title:"Education aur Research",app4Desc:"Optical communication, sensors aur signal processing ko explore karne mein useful.",app5Title:"Industrial Settings",app5Desc:"Suitable engineered system hone par kuch environments ko benefit ho sakta hai.",app6Title:"Healthcare Environments",app6Desc:"Specialized use possible hai, agar system design aur safety requirements poori hon.",
+teamKicker:"HAMARI TEAM",teamTitle:"Hamari Team Se Miliye",teamDesc:"Students ki team jo teamwork aur hands-on learning ke through science explore kar rahi hai.",teacherRole:"Teacher / Project Guide",guideRole:"Project Guide",class11:"Class 11",class9:"Class 9",techBuilder:"Tech Builder",designer:"Project Designer",helper:"Project Helper",manager:"Project Manager",idea:"Project Idea",moreStudents:"Aur Bhi Kai Students",moreDesc:"Kai students learning ke shared spirit mein contribute karte hain.",teamwork:"Teamwork",teamCaption:"Yeh project teamwork, creativity, scientific thinking aur collaboration ka result hai.",
+gratitudeKicker:"SAMMAN AUR AABHAAR",gratitudeTitle:"Samman aur Aabhaar Ke Saath",gratitudeDesc:"Hum apni respected Shivani Shimar Ma’am ka dil se dhanyavaad karte hain, jinhone humein guidance aur encouragement diya. Hum apne Principal Sir/Ma’am, sabhi teachers, parents, judges aur exhibition visitors ka bhi aabhar vyakt karte hain, jo students ke ideas aur learning ko support karte hain.",thankYou:"Hamare Science Exhibition Project par aane ke liye Dhanyavaad!",
+faqKicker:"AAM SAWAL",faqTitle:"Aksar Pooche Jaane Wale Sawal",q1:"Q1. Li-Fi kya hai?",ans1:"Li-Fi light-based wireless communication technology hai, jisme light ke through information transmit ki ja sakti hai.",q2:"Q2. Kya hamara model internet chalata hai?",ans2:"Nahi. Hamara model light ke through audio signal transmit karne ka basic educational demonstration hai.",q3:"Q3. Solar panel ka kya kaam hai?",ans3:"Solar panel light mein hone wale changes ko electrical signal mein convert karne mein help karta hai.",q4:"Q4. Kya light beam ka flicker aankhon se dikhna zaroori hai?",ans4:"Nahi. Information light intensity ke changes mein hoti hai, jo itni fast ho sakti hai ki aankhon ko flicker clearly na dikhe.",q5:"Q5. Kya website simulation real model ko control karti hai?",ans5:"Nahi. Yeh sirf visual explanation hai aur real hardware control ya actual audio transmit nahi karti.",
+footerTitle:"Music Transmission Through Light",footerProject:"School Science Exhibition Project",footerTeacher:"Teacher:",footerMade:"Curiosity, teamwork aur science ke pyaar se banaya gaya.",backTop:"↑ Upar Jayein"
+},
+en: {
+menu:"Menu",navHome:"Home",navAbout:"About Project",navHow:"How It Works",navComponents:"Components",navSimulation:"Simulation",navTeam:"Team",navFaq:"FAQs",
+badge:"School Science Exhibition Project",heroTitle:"Music Transmission Through Light",heroSub:"When Light Becomes a Medium for Information!",heroDesc:"Our science exhibition project demonstrates how an audio signal can be transmitted using LED light and converted back into sound at the receiver.",explore:"Explore Our Project ↘",howBtn:"How It Works",tryBtn:"Try Virtual Simulation",phone:"Mobile Phone",audioSource:"Audio source",ledTransmitter:"LED Transmitter",lightSignal:"Changing light signal",solarReceiver:"Solar Receiver",signalReceived:"Signal received",speaker:"Speaker",audioOutput:"Audio output",
+aboutKicker:"THE IDEA",aboutTitle:"About Our Project",aboutDesc:"In our model, an audio signal travels from a mobile phone to the transmitter circuit through an AUX cable. The transmitter circuit changes the LED's brightness according to the audio signal. The changing light falls on a solar panel at the receiver. The panel converts light variations into an electrical signal, which travels through the receiver connection to a speaker, where the sound can be heard.",objectiveTitle:"Project Objective",objectiveDesc:"To demonstrate the basic idea of transmitting an audio signal using changes in LED light and receiving it with a light-sensitive panel.",scopeTitle:"What This Model Demonstrates",scopeDesc:"This is an educational light-based audio transmission model. It is not a complete commercial Li-Fi internet or networking system.",
+processKicker:"FROM SOUND TO LIGHT AND BACK",howTitle:"How Our Project Works",howDesc:"The system sends a changing electrical audio signal through a light source, then converts the received light variations back into an electrical signal.",step1Title:"Audio Input",step1Desc:"Audio from a mobile phone reaches the transmitter circuit through an audio output or AUX connection.",step2Title:"Transmitter Circuit",step2Desc:"The circuit modulates the LED's light intensity according to the audio signal.",step3Title:"Light Transmission",step3Desc:"The changing LED light travels toward the receiver. Proper transmitter and receiver alignment is important.",step4Title:"Solar Panel Receiver",step4Desc:"The solar panel converts changes in received light into an electrical signal.",step5Title:"Audio Output",step5Desc:"The signal travels through the receiver circuit and audio connection to the speaker, where sound can be heard.",flowPhone:"Mobile Phone",flowAux:"AUX Cable",flowTx:"Transmitter Circuit",flowLed:"LED Light",flowSolar:"Solar Panel Receiver",flowRx:"Receiver Circuit / AUX",flowSpeaker:"Speaker",
+componentsKicker:"WHAT WE USE",componentsTitle:"Components Used",componentsDesc:"Edit the list below to match the exact hardware in your school model.",c1Title:"Mobile Phone",c1Desc:"Provides the audio signal.",c2Title:"AUX Cable",c2Desc:"Carries the audio signal between connections.",c3Title:"LED",c3Desc:"Acts as the light transmitter.",c4Title:"Transmitter Circuit",c4Desc:"Drives the LED according to the audio signal.",c5Title:"Battery",c5Desc:"Supplies power to the circuit.",c6Title:"Solar Panel",c6Desc:"Receives light variations.",c7Title:"Receiver Circuit",c7Desc:"Conditions the signal for speaker playback, if included.",c8Title:"Speaker",c8Desc:"Produces the audio output.",c9Title:"Connecting Wires",c9Desc:"Connect the circuit components.",c10Title:"Supporting Base",c10Desc:"Keeps the model stable.",editNoteTitle:"Editable project note:",editNoteDesc:"Remove any component above that is not present in your actual model. Record your confirmed parts here:",partsPlaceholder:"Write the components actually used in your model...",saveNote:"Save note on this device",saved:"Note saved on this device.",saveFailed:"Could not save the note. You can copy the text.",
+simulationKicker:"INTERACTIVE LEARNING",simulationTitle:"Try Our Li-Fi Simulation",simulationDesc:"Start the visual model to see a simulated light signal travel from the LED to the solar-panel receiver.",simSource:"Music source",simAudioIn:"Audio input",simLed:"LED",simTransmitter:"Transmitter",simPanel:"Solar panel",simReceiver:"Receiver",simSpeaker:"Virtual speaker",controlsTitle:"Simulation Controls",controlsDesc:"Adjust virtual light intensity and observe the illustrative signal indicator.",startSim:"▶ Start Simulation",stopSim:"■ Stop Simulation",lightIntensity:"Light intensity",intensityHelp:"This changes the visual effect only.",signalStrength:"Simulated signal strength",signalHelp:"Illustrative indicator, not a real measurement.",simulationWarning:"This is only a visual website simulation. It does not control real hardware or transmit actual music.",statusStopped:"● Simulation stopped",statusRunning:"● Simulation running",strengthLow:"Low",strengthMedium:"Medium",strengthGood:"Good",
+scienceKicker:"THE SCIENCE",scienceTitle:"Science Behind Li-Fi",scienceDesc:"The core idea is to encode information in changing light and detect those changes at the receiver.",s1Title:"Modulation",s1Desc:"Light intensity can be changed in a pattern that represents information. This process is called modulation.",s2Title:"Light to Electricity",s2Desc:"A light-sensitive receiver converts changes in received light into electrical changes.",s3Title:"Signal Quality",s3Desc:"LED type, receiver, circuit design, alignment, ambient light and distance can affect performance.",scienceNote:"Our model demonstrates a basic principle of light-based signal transmission. Commercial Li-Fi systems require more advanced hardware, signal processing and networking technology.",
+prosKicker:"A BALANCED VIEW",prosTitle:"Advantages & Limitations",advantages:"Advantages",limitations:"Limitations",a1:"Demonstrates an alternative way to transmit information.",a2:"Shows light as a transmission medium in this model.",a3:"Helps students learn electronics, circuits and communication.",a4:"Makes science learning interactive.",a5:"Can inspire further research into optical communication.",l1:"The receiver needs sufficient light from the transmitter.",l2:"Alignment and distance can affect the result.",l3:"Ambient light may interfere with the signal.",l4:"Audio quality depends on the circuit and components.",l5:"This basic model does not provide internet or full Li-Fi networking.",
+applicationsKicker:"BEYOND THE MODEL",applicationsTitle:"Applications of Advanced Li-Fi",applicationsDesc:"These are possible uses of developed Li-Fi systems—not functions demonstrated by our simple audio model.",app1Title:"Indoor Communication",app1Desc:"Potential data links in indoor spaces using suitable light systems.",app2Title:"RF-sensitive Locations",app2Desc:"Could be considered where radio-frequency interference must be carefully managed.",app3Title:"Smart Lighting",app3Desc:"Research into connected lighting and indoor digital environments.",app4Title:"Education & Research",app4Desc:"Useful for exploring optical communication, sensors and signal processing.",app5Title:"Industrial Settings",app5Desc:"Selected environments may benefit when a suitable engineered system is available.",app6Title:"Healthcare Environments",app6Desc:"Possible specialized use where system design and safety requirements are met.",
+teamKicker:"THE PEOPLE BEHIND THE IDEA",teamTitle:"Meet Our Team",teamDesc:"A student team exploring science through collaboration and hands-on learning.",teacherRole:"Teacher / Project Guide",guideRole:"Project Guide",class11:"Class 11",class9:"Class 9",techBuilder:"Tech Builder",designer:"Project Designer",helper:"Project Helper",manager:"Project Manager",idea:"Project Idea",moreStudents:"And Many More Students",moreDesc:"Many students contribute to a shared spirit of learning.",teamwork:"Teamwork",teamCaption:"This project is a result of teamwork, creativity, scientific thinking and collaboration.",
+gratitudeKicker:"WITH RESPECT AND GRATITUDE",gratitudeTitle:"With Respect and Gratitude",gratitudeDesc:"We sincerely thank our respected Shivani Shimar Ma’am for her guidance and encouragement. We are also grateful to our Principal, teachers, parents, judges and exhibition visitors for supporting students' ideas and learning.",thankYou:"Thank You for Visiting Our Science Exhibition Project!",
+faqKicker:"GOOD QUESTIONS",faqTitle:"Frequently Asked Questions",q1:"Q1. What is Li-Fi?",ans1:"Li-Fi is a light-based wireless communication technology that can transmit information using light.",q2:"Q2. Does our model provide internet?",ans2:"No. Our model is a basic educational demonstration of transmitting an audio signal using light.",q3:"Q3. What does the solar panel do?",ans3:"The solar panel helps convert changes in light into an electrical signal.",q4:"Q4. Must the light beam visibly flicker?",ans4:"No. Information is represented by changes in light intensity, which can happen too quickly for the eye to see as flicker.",q5:"Q5. Does the website simulation control the real model?",ans5:"No. It is only a visual explanation and does not control the hardware or transmit real audio.",
+footerTitle:"Music Transmission Through Light",footerProject:"School Science Exhibition Project",footerTeacher:"Teacher:",footerMade:"Made with curiosity, teamwork, and a love for science.",backTop:"↑ Back to Top"
+}
+};
+
+let currentLang = "hi";
+const languageButtons = document.querySelectorAll("[data-lang]");
+function setLanguage(lang) {
+  if (!translations[lang]) return;
+  currentLang = lang;
+  document.documentElement.lang = lang === "hi" ? "en" : "en";
+  document.documentElement.dataset.language = lang;
+  languageButtons.forEach(button => {
+    const active = button.dataset.lang === lang;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
+  document.querySelectorAll("[data-i18n]").forEach(element => {
+    const key = element.dataset.i18n;
+    const value = translations[lang][key];
+    if (typeof value === "string") element.textContent = value;
+  });
+  document.querySelectorAll("[data-placeholder]").forEach(element => {
+    const value = translations[lang][element.dataset.placeholder];
+    if (value) element.placeholder = value;
+  });
+  const status = document.getElementById("simStatus");
+  status.textContent = isRunning ? translations[lang].statusRunning : translations[lang].statusStopped;
+  document.getElementById("strengthLabel").textContent = getStrengthLabel(Number(intensity.value), lang);
+}
+languageButtons.forEach(button => button.addEventListener("click", () => setLanguage(button.dataset.lang)));
+
+const menuBtn = document.getElementById("menuBtn");
+const navlinks = document.getElementById("navlinks");
+menuBtn.addEventListener("click", () => {
+  const opened = navlinks.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded", String(opened));
+});
+navlinks.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+  navlinks.classList.remove("open");
+  menuBtn.setAttribute("aria-expanded", "false");
+}));
+
+let isRunning = false;
+const simStage = document.getElementById("simStage");
+const intensity = document.getElementById("intensity");
+function getStrengthLabel(value, lang = currentLang) {
+  const t = translations[lang];
+  if (value < 30) return t.strengthLow;
+  if (value < 65) return t.strengthMedium;
+  return t.strengthGood;
+}
+function updateIntensity() {
+  const value = Number(intensity.value);
+  document.getElementById("intensityValue").textContent = value + "%";
+  document.getElementById("strengthLabel").textContent = getStrengthLabel(value);
+  document.getElementById("strengthBar").style.width = value + "%";
+  simStage.style.setProperty("--sim-glow", value / 100);
+  simStage.querySelector(".sim-led").style.opacity = String(.35 + value / 150);
+  simStage.querySelector(".beam").style.opacity = isRunning ? String(.2 + value / 125) : ".22";
+}
+function startSimulation() {
+  isRunning = true;
+  simStage.classList.add("running");
+  document.getElementById("simStatus").textContent = translations[currentLang].statusRunning;
+  updateIntensity();
+}
+function stopSimulation() {
+  isRunning = false;
+  simStage.classList.remove("running");
+  document.getElementById("simStatus").textContent = translations[currentLang].statusStopped;
+  updateIntensity();
+}
+document.getElementById("startSim").addEventListener("click", startSimulation);
+document.getElementById("stopSim").addEventListener("click", stopSimulation);
+intensity.addEventListener("input", updateIntensity);
+
+const partsNote = document.getElementById("partsNote");
+try {
+  const saved = localStorage.getItem("lifiProjectPartsNote");
+  if (saved) partsNote.value = saved;
+} catch (_) {}
+document.getElementById("saveParts").addEventListener("click", () => {
+  const status = document.getElementById("partsSaved");
+  try {
+    localStorage.setItem("lifiProjectPartsNote", partsNote.value);
+    status.textContent = translations[currentLang].saved;
+  } catch (_) {
+    status.textContent = translations[currentLang].saveFailed;
+  }
+});
+document.getElementById("topBtn").addEventListener("click", () => window.scrollTo({top:0,behavior:"smooth"}));
+setLanguage("hi");
+updateIntensity();
+stopSimulation();
+</script>
+</body>
+</html>
